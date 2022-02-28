@@ -868,6 +868,11 @@ class TACBasicBlock(evm_cfg.EVMBasicBlock):
         self.cfg = cfg
         """The TACGraph to which this block belongs."""
 
+    def __repr__(self) -> str:
+        super_str = super().__str__()
+        op_seq = "\n".join(str(op) for op in self.tac_ops)
+        return "\n".join([super_str, op_seq])
+    
     def __str__(self):
         super_str = super().__str__()
         op_seq = "\n".join(str(op) for op in self.tac_ops)
